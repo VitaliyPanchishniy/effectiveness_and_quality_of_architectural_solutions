@@ -89,7 +89,7 @@ class SmsNotificationAdapter implements Notification {
     }
 }
 
-// 5. Клієнтський код
+// Клієнтський код
 public class Main {
 
     // Клієнтський метод, який працює тільки з інтерфейсом Notification
