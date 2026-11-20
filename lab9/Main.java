@@ -1,18 +1,18 @@
 package lab9;
 
-// 1. Інтерфейс Відвідувача (Visitor)
+// Інтерфейс Відвідувача (Visitor)
 interface Visitor {
     String visitCompany(Company company);
     String visitDepartment(Department department);
     String visitEmployee(Employee employee);
 }
 
-// 2. Інтерфейс Елемента структури (Element)
+// Інтерфейс Елемента структури
 interface OrganizationElement {
     String accept(Visitor visitor);
 }
 
-// 3. Сутність: Співробітник (ConcreteElement)
+// Сутність: Співробітник
 class Employee implements OrganizationElement {
     private String position;
     private double salary;
@@ -36,7 +36,7 @@ class Employee implements OrganizationElement {
     }
 }
 
-// 4. Сутність: Департамент (ConcreteElement)
+// Сутність: Департамент
 class Department implements OrganizationElement {
     private String name;
     private Employee[] employees;
@@ -60,7 +60,7 @@ class Department implements OrganizationElement {
     }
 }
 
-// 5. Сутність: Компанія (ConcreteElement)
+// Сутність: Компанія
 class Company implements OrganizationElement {
     private String name;
     private Department[] departments;
@@ -84,7 +84,7 @@ class Company implements OrganizationElement {
     }
 }
 
-// 6. Конкретний Відвідувач: Зарплатна відомість (ConcreteVisitor)
+// Конкретний Відвідувач: Зарплатна відомість
 class SalaryReportVisitor implements Visitor {
 
     @Override
@@ -118,7 +118,7 @@ class SalaryReportVisitor implements Visitor {
     }
 }
 
-// 7. Клієнтський код (Client)
+//  Клієнтський код
 public class Main {
     public static void main(String[] args) {
         // Створення співробітників для відділу розробки
@@ -142,11 +142,11 @@ public class Main {
         // Ініціалізація відвідувача для формування репорту
         Visitor salaryReportVisitor = new SalaryReportVisitor();
 
-        // 1. Отримання репорту для всієї компанії
+        // Отримання репорту для всієї компанії
         String companyReport = company.accept(salaryReportVisitor);
         System.out.println(companyReport);
 
-        // 2. Отримання репорту окремо для одного з департаментів
+        // Отримання репорту окремо для одного з департаментів
         System.out.println("==========================================");
         System.out.println("ОКРЕМИЙ ЗВІТ ПО ДЕПАРТАМЕНТУ:");
         String singleDepartmentReport = devDepartment.accept(salaryReportVisitor);
